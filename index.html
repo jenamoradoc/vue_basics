@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vue TODO app</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+		<script src="./components/message.js"></script>
+		<script src="./components/computed-properties.js"></script>
+		<script src="./components/method.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<message></message>
+			<computed-properties></computed-properties>
+			<method></method>
+		</div>
+
+		<script>
+			const App = new Vue({
+				el: "#app",
+				data: {
+					message: "Mi primera app en Vue",
+				},
+			});
+		</script>
+	</body>
+</html>
