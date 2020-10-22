@@ -10,6 +10,12 @@
 		<script src="./components/message.js"></script>
 		<script src="./components/computed-properties.js"></script>
 		<script src="./components/method.js"></script>
+		<script src="./components/vmodel-checkboxes.js"></script>
+		<script src="./components/emit.js"></script>
+		<script src="./components/parent-data.js"></script>
+		<script src="./components/child-data.js"></script>
+		<script src="./components/child-methods.js"></script>
+
 	</head>
 	<body>
 		<div id="app">
@@ -17,14 +23,35 @@
 			<message></message>
 			<computed-properties></computed-properties>
 			<method></method>
+			<vmodel-checkboxes></vmodel-checkboxes>
+			<emit @show_car_brand="showCardBrandFromEmitCmp"></emit>
+			<parent-data></parent-data>
+			<child-data ref="childData"></child-data>
+			<child-methods ref="childMethod"></child-methods>
 		</div>
 
 		<script>
 			const App = new Vue({
 				el: "#app",
-				data: {
-					message: "Mi primera app en Vue",
+				mounted () {
+					const cmpName = this.$refs.childData.cmpName;
+					console.log(cmpName);
+
+					setTimeout(()  => {
+						this.$refs.childMethod.showCmpName();
+					}, 3000)
 				},
+				data() {
+					return {
+						parrentmsg: 'mensaje desde el padre Vue',
+						message: "Mi primera app en Vue",
+					}
+				},
+				methods: {
+					showCardBrandFromEmitCmp (cardBrand) {
+						alert(cardBrand)
+					}
+				}
 			});
 		</script>
 	</body>
